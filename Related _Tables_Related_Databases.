@@ -1,0 +1,59 @@
+/* All of the names are chosen by randomly */
+/* Main purpose is understanding the basics of Related Tables and Related Databases. */ 
+
+CREATE TABLE Movie_stars (id INTEGER PRIMARY KEY AUTOINCREMENT,
+fullname TEXT,
+age INTEGER );
+
+CREATE TABLE Movies (id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT,
+person_id INTEGER );
+
+INSERT INTO Movie_stars (fullname, age) VALUES ("bby McBobbyFace", "40");
+INSERT INTO Movie_stars (fullname, age) VALUES ("Luc Boucie", "25");
+INSERT INTO Movie_stars (fullname, age) VALUES ("nana FoFanna", "22");
+INSERT INTO Movie_stars (fullname, age) VALUES ("Shish Kabob", "20");
+INSERT INTO Movie_stars (fullname, age) VALUES ("Flufy Sparkles", "48");
+INSERT INTO Movie_stars (fullname, age) VALUES ("John Depp" ,45);
+
+SELECT * FROM Movie_stars;
+
+INSERT INTO Movies (person_id, name) VALUES (1, "saw");
+INSERT INTO Movies (person_id, name) VALUES (1, "cars");
+INSERT INTO Movies (person_id, name) VALUES (2, "redkit");
+INSERT INTO Movies (person_id, name) VALUES (2, "Out!");
+INSERT INTO Movies (person_id, name) VALUES (3, "Transformers");
+INSERT INTO Movies (person_id, name) VALUES (3, "Harry Potter");
+INSERT INTO Movies (person_id, name) VALUES (3, "Daily Fx");
+INSERT INTO Movies (person_id, name) VALUES (4, "Alone");
+INSERT INTO Movies (person_id, name) VALUES (4, "World War Z");
+INSERT INTO Movies (person_id, name) VALUES (4, "Hi Theree");
+
+
+CREATE TABLE couples(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+person1_id INTEGER,
+person2_id INTEGER);
+
+INSERT INTO couples(person1_id, person2_id) 
+VALUES (1,3);
+INSERT INTO couples(person1_id , person2_id)
+VALUES (2,4);
+INSERT INTO couples(person1_id , person2_id)
+VALUES (5,6);
+
+SELECT a.fullname,b.fullname 
+FROM couples 
+JOIN Movie_stars a
+ON a.id = couples.person1_id
+JOIN Movie_stars b
+ON b.id = couples.person2_id;
+
+
+
+/* Using Join */
+
+SELECT Movie_stars.fullname,Movies.name 
+FROM Movie_stars 
+JOIN Movies
+ON Movie_stars.id = Movies.person_id ;
